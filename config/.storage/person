@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "cyrille",
+        "name": "cyrille",
+        "user_id": "7916f8c964ca49a8929930267fdb8dc4",
+        "device_trackers": []
+      }
+    ]
+  }
+}

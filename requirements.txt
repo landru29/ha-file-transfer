@@ -1,0 +1,2 @@
+homeassistant==2024.1.6
+ha-av==10.1.1
