@@ -158,8 +158,11 @@ class SensorFileTransfer(SensorEntity):
         :param aws_secret_access_key:  Secret Key
         :return: True if file was uploaded, else False
         """
+        _LOGGER.debug("scanning folder %s"%(local_folder))
         files = self.scan_folder(local_folder)
         for object_name in files:
+            _LOGGER.debug("file %s -> %s"%(files[object_name], object_name))
+
             if self.upload_file(
                 file_name=files[object_name],
                 aws_bucket=aws_bucket,
@@ -175,6 +178,7 @@ class SensorFileTransfer(SensorEntity):
                     _LOGGER.error("removing file %s: %s", files[object_name], e)
 
                 if delete_after:
+                    _LOGGER.debug("removing file %s"%(files[object_name]))
                     try:
                         os.remove(files[object_name])
                     except OSError as e:
@@ -184,6 +188,7 @@ class SensorFileTransfer(SensorEntity):
                 return False
 
         self.async_write_ha_state()
+        _LOGGER.debug("success: %s"%(files[object_name]))
 
 
     def scan_folder(self, folder: str)->dict:
@@ -262,7 +267,7 @@ class SensorFileTransfer(SensorEntity):
         if aws_secret_access_key is not None and aws_secret_access_key != "":
             current_aws_secret_access_key = aws_secret_access_key
 
-        _LOGGER.info("transfering files")
+        _LOGGER.debug("transfering files fom %s to %s@%s"%(local_folder, current_aws_endpoint_url, current_aws_bucket))
         self.transfer_files(aws_bucket=current_aws_bucket,
                        local_folder=local_folder,
                        aws_endpoint_url=current_aws_endpoint_url,
