@@ -188,7 +188,7 @@ class SensorFileTransfer(SensorEntity):
                 return False
 
         self.async_write_ha_state()
-        _LOGGER.debug("success: %s"%(files[object_name]))
+        _LOGGER.debug("success: %d files"%(len(files)))
 
 
     def scan_folder(self, folder: str)->dict:
