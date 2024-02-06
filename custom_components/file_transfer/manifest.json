@@ -10,5 +10,8 @@
     "integration_type": "device",
     "iot_class": "calculated",
     "quality_scale": "silver",
-    "version": "3.0.0"
+    "version": "3.0.0",
+    "requirements": [
+        "boto3==1.34.34"
+    ]
 }

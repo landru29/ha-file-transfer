@@ -2,6 +2,7 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
 
 RUN sudo apt update && \
     sudo apt-get install -y \
+    ffmpeg \
     libunistring-dev \
     libaom-dev \
     libdav1d-dev \
@@ -63,14 +64,6 @@ RUN sudo apt update && \
     python3-dev \
     python3-pip \
     libdrm-dev
-# build-essential \
-# libavformat-dev \
-# libavcodec-dev \
-# libavdevice-dev \
-# libavutil-dev \
-# libswscale-dev \
-# libswresample-dev \
-# libavfilter-dev
 
 RUN pip install --upgrade pip
 

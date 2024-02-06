@@ -1,0 +1,60 @@
+send_and_clean:
+  name: Send and clean
+  description: Send File to S3 and remove from local directory
+  target:
+    entity:
+      integration: file_transfer
+      device_class: data_size
+  fields:
+    aws_endpoint_url:
+      name: AWS entrypoint URL
+      description: URL to S3
+      required: false
+      advanced: false
+      example: "https://foo"
+      default: ""
+      selector:
+        text:
+    aws_bucket:
+      name: Bucket AWS
+      description: Bucket where to send files
+      required: false
+      advanced: false
+      example: "test"
+      default: ""
+      selector:
+        text:
+    aws_access_key_id:
+      name: AWS access key
+      description: Access Key
+      required: false
+      advanced: false
+      example: "azerty"
+      default: ""
+      selector:
+        text:
+    aws_secret_access_key:
+      name: AWS secret key
+      description: Secret Key
+      required: false
+      advanced: false
+      example: "insecure"
+      default: ""
+      selector:
+        text:
+    local_folder:
+      name: Folder to track
+      description: Folder that will be scanned
+      required: true
+      advanced: false
+      example: "/home"
+      default: ""
+      selector:
+        text:
+    delete_after:
+      name: Delete file after transfer
+      description: If true, the files are deleted from the local folder
+      required: false
+      advanced: false
+      selector:
+        boolean:

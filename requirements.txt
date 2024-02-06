@@ -1,2 +1,4 @@
 homeassistant==2024.1.6
 ha-av==10.1.1
+boto3==1.34.34
+numpy==1.26.3
